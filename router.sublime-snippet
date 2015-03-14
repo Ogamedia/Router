@@ -35,24 +35,27 @@ Router.route('/users/:_id', function(){
 });
 
 // for different loading template and on wait
-Router.route('/path/', function(){
-	this.render('template');
-	name: 'name',
-	layoutTemplate: 'anotherTemplate'
-	},{
-	// on wait function
-	waitOn: function() {
-		return [ Meteor.subscribe('publication'), Meteor.subscribe('publication2')]
-	},
 
-	// data context for the view
-	data: function() {
-		return{
-			info: Collection.find(),
-			info2: Collection2.find()
+Router.map( function () {
+	this.route('user', {
+		path: '/users/details/:_id',
+		name: 'userDetail',
+		layoutTemplate: 'userLayout',
+
+		waitOn: function(){
+			var pass = this.params._id;
+			return [
+				Meteor.subscribe('users', pass)			]
+		},
+
+		data: function() {
+			return {
+				info: Collections.find()
+			}
 		}
-	}
+	});
 });
+
 		]]></content>
 	<tabTrigger>router</tabTrigger>
 	<scope>source.js</scope>
