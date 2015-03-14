@@ -7,5 +7,9 @@
 #### Alternatively ####
 You can copy fork/clone these repo and copy the Iron router folder into your sublime text package location
 
+###  To use ###
+Type in your router.js or any .js files  
+`router` + `tab`
+
 ###  To contribute ###
 Fork this repo and send pull requests.
